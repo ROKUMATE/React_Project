@@ -13,6 +13,10 @@ function Github() {
     //  })
     // }, [])
 
+    if (!data) {
+        return <div> LOADING !</div>;
+    }
+
     return (
         <div className="text-center m-4 bg-gray-600 text-white p-4 text-3xl">
             Github followers: {data.followers}
@@ -23,10 +27,14 @@ function Github() {
 
 export default Github;
 
-export const githubInfoLoader = async () => {
-    // const id = useParams();
+export const githubInfoLoader = async ({ params }) => {
+    const { id } = params;
+    const response = await fetch(
+        `https://api.github.com/users/${id || ROKUMATE}`
+    );
+    return response.json();
     // console.log(id);
     // const response = await fetch(`https://api.github.com/users/${id}`);
-    const response = await fetch(`https://api.github.com/users/ROKUMATE`);
-    return response.json();
+    // const response = await fetch(`https://api.github.com/users/ROKUMATE`);
+    // return response.json();
 };
