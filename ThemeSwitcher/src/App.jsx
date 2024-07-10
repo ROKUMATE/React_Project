@@ -57,7 +57,6 @@ function App() {
         setThemeMode("dark");
     };
 
-    // Actual Change in the Theme
     useEffect(() => {
         document.querySelector("html").classList.remove("light", "dark");
         document.querySelector("html").classList.add(themeMode);
